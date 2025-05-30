@@ -10,26 +10,28 @@
         <meta name="author" content="Bilal Al Tabbaa (spooky)">
       
       
-      
-        <link rel="prev" href="../">
-      
-      
-        <link rel="next" href="../../02_Theory/01-intro/">
+        <link rel="canonical" href="https://spookysec.github.io/pwnwiki/03_Tools/03-pwntools.html">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+        <link rel="prev" href="02-ghidra.html">
+      
+      
+        <link rel="next" href="../04_Exploits/01-goal.html">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Whoami - Binary Exploitation Workshop</title>
+        <title>Pwntools - Binary Exploitation Workshop</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/blacknred.css">
+      <link rel="stylesheet" href="../stylesheets/blacknred.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#whoami" class="md-skip">
+        <a href="#what-is-pwntools" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Binary Exploitation Workshop" class="md-header__button md-logo" aria-label="Binary Exploitation Workshop" data-md-component="logo">
+    <a href=".." title="Binary Exploitation Workshop" class="md-header__button md-logo" aria-label="Binary Exploitation Workshop" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Whoami
+              Pwntools
             
           </span>
         </div>
@@ -179,13 +181,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../01_Frame/index.html" class="md-tabs__link">
           
   
   
@@ -205,7 +205,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../02_Theory/01-intro/" class="md-tabs__link">
+        <a href="../02_Theory/01-intro.html" class="md-tabs__link">
           
   
   
@@ -221,11 +221,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../03_Tools/01-gdb/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="01-gdb.html" class="md-tabs__link">
           
   
   
@@ -245,7 +247,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../04_Exploits/01-goal/" class="md-tabs__link">
+        <a href="../04_Exploits/01-goal.html" class="md-tabs__link">
           
   
   
@@ -263,7 +265,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../next-steps/" class="md-tabs__link">
+      <a href="../01_Frame/next-steps.html" class="md-tabs__link">
         
   
   
@@ -298,7 +300,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Binary Exploitation Workshop" class="md-nav__button md-logo" aria-label="Binary Exploitation Workshop" data-md-component="logo">
+    <a href=".." title="Binary Exploitation Workshop" class="md-nav__button md-logo" aria-label="Binary Exploitation Workshop" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -313,29 +315,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
         
           
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
             
   
   
@@ -348,7 +345,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             📍 Intro
@@ -362,7 +359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../01_Frame/index.html" class="md-nav__link">
         
   
   
@@ -382,32 +379,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Whoami
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../01_Frame/whoami.html" class="md-nav__link">
         
   
   
@@ -418,53 +393,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#background" class="md-nav__link">
-    <span class="md-ellipsis">
-      🧠 Background
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#current-stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      🗂️ Current Stack
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contact" class="md-nav__link">
-    <span class="md-ellipsis">
-      💬 Contact
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -525,7 +453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02_Theory/01-intro/" class="md-nav__link">
+      <a href="../02_Theory/01-intro.html" class="md-nav__link">
         
   
   
@@ -548,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02_Theory/02-binary-execution/" class="md-nav__link">
+      <a href="../02_Theory/02-binary-execution.html" class="md-nav__link">
         
   
   
@@ -571,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02_Theory/03-assembly/" class="md-nav__link">
+      <a href="../02_Theory/03-assembly.html" class="md-nav__link">
         
   
   
@@ -598,24 +526,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -628,7 +561,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             🛠 Tools
@@ -642,7 +575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03_Tools/01-gdb/" class="md-nav__link">
+      <a href="01-gdb.html" class="md-nav__link">
         
   
   
@@ -665,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03_Tools/02-ghidra/" class="md-nav__link">
+      <a href="02-ghidra.html" class="md-nav__link">
         
   
   
@@ -685,10 +618,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../03_Tools/03-pwntools/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Pwntools
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="03-pwntools.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -699,6 +654,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧰 Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-it-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Try It Yourself
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-pwntools" class="md-nav__link">
+    <span class="md-ellipsis">
+      🤖 Why Use Pwntools?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pwntools-for-exploit-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      💥 Pwntools for Exploit Development
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -759,7 +770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_Exploits/01-goal/" class="md-nav__link">
+      <a href="../04_Exploits/01-goal.html" class="md-nav__link">
         
   
   
@@ -782,7 +793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_Exploits/02-plan/" class="md-nav__link">
+      <a href="../04_Exploits/02-plan.html" class="md-nav__link">
         
   
   
@@ -805,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_Exploits/03-action/" class="md-nav__link">
+      <a href="../04_Exploits/03-action.html" class="md-nav__link">
         
   
   
@@ -835,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../next-steps/" class="md-nav__link">
+      <a href="../01_Frame/next-steps.html" class="md-nav__link">
         
   
   
@@ -877,27 +888,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#background" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
-      🧠 Background
+      🧰 Installation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#current-stack" class="md-nav__link">
+  <a href="#try-it-yourself" class="md-nav__link">
     <span class="md-ellipsis">
-      🗂️ Current Stack
+      🚀 Try It Yourself
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#contact" class="md-nav__link">
+  <a href="#why-use-pwntools" class="md-nav__link">
     <span class="md-ellipsis">
-      💬 Contact
+      🤖 Why Use Pwntools?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pwntools-for-exploit-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      💥 Pwntools for Exploit Development
     </span>
   </a>
   
@@ -919,40 +939,62 @@
 
 
 
-<h1 id="whoami">👤 <code>$ whoami</code><a class="headerlink" href="#whoami" title="Permanent link">&para;</a></h1>
-<div class="admonition quote">
-<p class="admonition-title">Quote</p>
-<p>"Know yourself and you will win all battles." – Sun Tzu</p>
+<p><img alt="" src="pwntools.png" /></p>
+<h1 id="what-is-pwntools">🐍 What is Pwntools?<a class="headerlink" href="#what-is-pwntools" title="Permanent link">&para;</a></h1>
+<p><strong>Pwntools</strong> is a Python library built for exploit development. It makes it easy to:</p>
+<ul>
+<li>Automate interaction with binaries and processes</li>
+<li>Craft payloads and shellcode</li>
+<li>Bypass protections with elegant, scriptable logic</li>
+</ul>
+<p>Whether you're CTF-ing or writing real-world exploits, Pwntools is your best friend.</p>
+<hr />
+<h2 id="installation">🧰 Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>Make sure your system is ready, then install Pwntools:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>python3-dev<span class="w"> </span>git<span class="w"> </span>libssl-dev<span class="w"> </span>libffi-dev<span class="w"> </span>build-essential
+$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pwntools
+</code></pre></div>
+<hr />
+<h2 id="try-it-yourself">🚀 Try It Yourself<a class="headerlink" href="#try-it-yourself" title="Permanent link">&para;</a></h2>
+<p>Launch a binary using Pwntools in just a few lines:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pwn</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&quot;/bin/ls&quot;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</code></pre></div>
+<p>You've just spun up a binary and gained interactive control over it — all in Python!</p>
+<hr />
+<h2 id="why-use-pwntools">🤖 Why Use Pwntools?<a class="headerlink" href="#why-use-pwntools" title="Permanent link">&para;</a></h2>
+<p>Instead of manually interacting with GDB or a terminal, Pwntools lets you:</p>
+<ul>
+<li>Send/receive input and output from programs</li>
+<li>Automate full exploitation workflows</li>
+<li>Format payloads and generate shellcode</li>
+<li>Work locally or connect to remote services</li>
+</ul>
+<hr />
+<h2 id="pwntools-for-exploit-development">💥 Pwntools for Exploit Development<a class="headerlink" href="#pwntools-for-exploit-development" title="Permanent link">&para;</a></h2>
+<p>Pwntools makes your exploit scripts:</p>
+<ul>
+<li><strong>Repeatable</strong> — easily test and tweak without manual work</li>
+<li><strong>Readable</strong> — clear logic, clean syntax</li>
+<li><strong>Flexible</strong> — interact locally or over the network</li>
+</ul>
+<hr />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>🔁 Exploit dev is trial and error — Pwntools makes iteration painless.</p>
 </div>
+<p>🧠 Bonus: Combine Pwntools with GDB (via <code>gdb.attach(p)</code>) to debug live during exploit dev!</p>
 <hr />
-<h2 id="background">🧠 Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
-<p>Hi, I’m Bilal Al Tabbaa (spooky) — a student with a passion for cybersecurity, low-level hacking, and the art of binary exploitation. I'm learning with everyone as I go along, and in no way an expert or master.</p>
+<p>💡 Explore the <a href="https://docs.pwntools.com/en/stable/">Pwntools docs</a> to unlock powerful tools like:</p>
 <ul>
-<li>🎓 <strong>Field of Study</strong>: Computer Engineer / Cybersecurity</li>
-<li>🥋 <strong>Hobbies</strong>: BJJ, reading, lifting, hacking</li>
-<li>🌄 <strong>My Vision</strong>: Go deep in one craft, stay dangerous in the rest.</li>
+<li><code>p32()</code> / <code>u64()</code> for packing/unpacking</li>
+<li><code>asm()</code> and <code>shellcraft</code> for shellcode</li>
+<li><code>ROP()</code> for crafting ROP chains</li>
 </ul>
-<hr />
-<h2 id="current-stack">🗂️ Current Stack<a class="headerlink" href="#current-stack" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>OS</strong>: Windows 10 / Kali WSL + Parrot OS Laptop</li>
-<li><strong>Debugger</strong>: GDB + GEF</li>
-<li><strong>Reversing</strong>: Ghidra</li>
-<li><strong>Scripting</strong>: Python + Pwntools</li>
-<li><strong>Editor</strong>: Obsidian + VSCode</li>
-<li><strong>Help</strong>: Google + ChatGPT (😬)</li>
-</ul>
-<hr />
-<h2 id="contact">💬 Contact<a class="headerlink" href="#contact" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Instagram</strong>: [instagram.com/spooky_sec]</li>
-<li><strong>GitHub</strong>: [github.com/SpookySec]</li>
-<li><strong>Email / Phone Number</strong>: Please contact me privately and I'll be happy to share.</li>
-</ul>
-<hr />
-<div class="admonition danger">
-<p>"Hack the planet." 🌐</p>
-</div>
 
 
 
@@ -1007,10 +1049,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "content.action.edit", "content.tooltips"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "content.action.edit", "content.tooltips"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>

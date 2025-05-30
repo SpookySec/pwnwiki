@@ -10,26 +10,28 @@
         <meta name="author" content="Bilal Al Tabbaa (spooky)">
       
       
-      
-        <link rel="prev" href="../02-ghidra/">
-      
-      
-        <link rel="next" href="../../04_Exploits/01-goal/">
+        <link rel="canonical" href="https://spookysec.github.io/pwnwiki/02_Theory/01-intro.html">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+        <link rel="prev" href="../01_Frame/whoami.html">
+      
+      
+        <link rel="next" href="02-binary-execution.html">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Pwntools - Binary Exploitation Workshop</title>
+        <title>What is BinExp? - Binary Exploitation Workshop</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/blacknred.css">
+      <link rel="stylesheet" href="../stylesheets/blacknred.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-is-pwntools" class="md-skip">
+        <a href="#what-is-binary-exploitation" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Binary Exploitation Workshop" class="md-header__button md-logo" aria-label="Binary Exploitation Workshop" data-md-component="logo">
+    <a href=".." title="Binary Exploitation Workshop" class="md-header__button md-logo" aria-label="Binary Exploitation Workshop" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pwntools
+              What is BinExp?
             
           </span>
         </div>
@@ -183,31 +185,11 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../01_Frame/" class="md-tabs__link">
+        <a href="../01_Frame/index.html" class="md-tabs__link">
           
   
   
   📍 Intro
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../02_Theory/01-intro/" class="md-tabs__link">
-          
-  
-  
-  📚 Theory
 
         </a>
       </li>
@@ -225,7 +207,27 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../01-gdb/" class="md-tabs__link">
+        <a href="01-intro.html" class="md-tabs__link">
+          
+  
+  
+  📚 Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../03_Tools/01-gdb.html" class="md-tabs__link">
           
   
   
@@ -245,7 +247,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../04_Exploits/01-goal/" class="md-tabs__link">
+        <a href="../04_Exploits/01-goal.html" class="md-tabs__link">
           
   
   
@@ -263,7 +265,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../01_Frame/next-steps/" class="md-tabs__link">
+      <a href="../01_Frame/next-steps.html" class="md-tabs__link">
         
   
   
@@ -298,7 +300,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Binary Exploitation Workshop" class="md-nav__button md-logo" aria-label="Binary Exploitation Workshop" data-md-component="logo">
+    <a href=".." title="Binary Exploitation Workshop" class="md-nav__button md-logo" aria-label="Binary Exploitation Workshop" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -357,7 +359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01_Frame/" class="md-nav__link">
+      <a href="../01_Frame/index.html" class="md-nav__link">
         
   
   
@@ -380,129 +382,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01_Frame/whoami/" class="md-nav__link">
+      <a href="../01_Frame/whoami.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Whoami
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    📚 Theory
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            📚 Theory
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02_Theory/01-intro/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    What is BinExp?
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02_Theory/02-binary-execution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Binary Execution
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02_Theory/03-assembly/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Assembly Basics
     
   </span>
   
@@ -543,15 +428,15 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
-    🛠 Tools
+    📚 Theory
     
   </span>
   
@@ -559,58 +444,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            🛠 Tools
+            📚 Theory
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-gdb/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    GDB
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-ghidra/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Ghidra
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -633,7 +472,7 @@
   
   
   <span class="md-ellipsis">
-    Pwntools
+    What is BinExp?
     
   </span>
   
@@ -641,12 +480,12 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="01-intro.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    Pwntools
+    What is BinExp?
     
   </span>
   
@@ -669,36 +508,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#the-importance-of-binary-exploitation" class="md-nav__link">
     <span class="md-ellipsis">
-      🧰 Installation
+      💡 The Importance of Binary Exploitation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 The Importance of Binary Exploitation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-this-workshop-is-really-about" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 What This Workshop Is Really About
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#try-it-yourself" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 Try It Yourself
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-use-pwntools" class="md-nav__link">
+  <a href="#core-tools-well-use" class="md-nav__link">
     <span class="md-ellipsis">
-      🤖 Why Use Pwntools?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pwntools-for-exploit-development" class="md-nav__link">
-    <span class="md-ellipsis">
-      💥 Pwntools for Exploit Development
+      🛠️ Core Tools We'll Use
     </span>
   </a>
   
@@ -708,6 +544,169 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-binary-execution.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Binary Execution
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-assembly.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assembly Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🛠 Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            🛠 Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Tools/01-gdb.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Tools/02-ghidra.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ghidra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Tools/03-pwntools.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pwntools
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -768,7 +767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_Exploits/01-goal/" class="md-nav__link">
+      <a href="../04_Exploits/01-goal.html" class="md-nav__link">
         
   
   
@@ -791,7 +790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_Exploits/02-plan/" class="md-nav__link">
+      <a href="../04_Exploits/02-plan.html" class="md-nav__link">
         
   
   
@@ -814,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_Exploits/03-action/" class="md-nav__link">
+      <a href="../04_Exploits/03-action.html" class="md-nav__link">
         
   
   
@@ -844,7 +843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01_Frame/next-steps/" class="md-nav__link">
+      <a href="../01_Frame/next-steps.html" class="md-nav__link">
         
   
   
@@ -886,36 +885,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#the-importance-of-binary-exploitation" class="md-nav__link">
     <span class="md-ellipsis">
-      🧰 Installation
+      💡 The Importance of Binary Exploitation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 The Importance of Binary Exploitation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-this-workshop-is-really-about" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 What This Workshop Is Really About
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#try-it-yourself" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 Try It Yourself
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-use-pwntools" class="md-nav__link">
+  <a href="#core-tools-well-use" class="md-nav__link">
     <span class="md-ellipsis">
-      🤖 Why Use Pwntools?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pwntools-for-exploit-development" class="md-nav__link">
-    <span class="md-ellipsis">
-      💥 Pwntools for Exploit Development
+      🛠️ Core Tools We'll Use
     </span>
   </a>
   
@@ -937,62 +933,46 @@
 
 
 
-<p><img alt="" src="../pwntools.png" /></p>
-<h1 id="what-is-pwntools">🐍 What is Pwntools?<a class="headerlink" href="#what-is-pwntools" title="Permanent link">&para;</a></h1>
-<p><strong>Pwntools</strong> is a Python library built for exploit development. It makes it easy to:</p>
+<p><img alt="" src="binexp.png" /></p>
+<h1 id="what-is-binary-exploitation">🧨 What is Binary Exploitation?<a class="headerlink" href="#what-is-binary-exploitation" title="Permanent link">&para;</a></h1>
+<p>Binary exploitation is the art of taking advantage of flaws in a program to make it do something it wasn’t supposed to — like giving you control over it.</p>
+<p>Imagine a program as a vending machine. You press buttons, and it follows a fixed set of instructions to give you a snack. But what if there's a flaw in the design — a hidden sequence that lets you get snacks for free, or even open the whole machine?</p>
+<p>That’s binary exploitation: finding and using those hidden flaws to manipulate how software behaves.</p>
+<hr />
+<h2 id="the-importance-of-binary-exploitation">💡 The Importance of Binary Exploitation<a class="headerlink" href="#the-importance-of-binary-exploitation" title="Permanent link">&para;</a></h2>
+<p>Okay great, we can exploit programs and make them do things we want, but why should I care?</p>
+<p>Because understanding how software breaks teaches you how it works.</p>
 <ul>
-<li>Automate interaction with binaries and processes</li>
-<li>Craft payloads and shellcode</li>
-<li>Bypass protections with elegant, scriptable logic</li>
+<li>It’s the foundation of real-world hacks — privilege escalation, malware, jailbreaks, CTFs, you name it.</li>
+<li>It forces you to think like an attacker — and that's exactly how defenders get better.</li>
+<li>It sharpens your low-level skills — memory, assembly, debugging — things most devs avoid, but hackers master.</li>
+<li>It’s how security researchers discover and report zero-days.</li>
+<li>It’s a valuable skillset — whether you’re aiming for CTFs, red teaming, reverse engineering, or exploit dev.</li>
 </ul>
-<p>Whether you're CTF-ing or writing real-world exploits, Pwntools is your best friend.</p>
-<hr />
-<h2 id="installation">🧰 Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<p>Make sure your system is ready, then install Pwntools:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>python3-dev<span class="w"> </span>git<span class="w"> </span>libssl-dev<span class="w"> </span>libffi-dev<span class="w"> </span>build-essential
-$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
-$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pwntools
-</code></pre></div>
-<hr />
-<h2 id="try-it-yourself">🚀 Try It Yourself<a class="headerlink" href="#try-it-yourself" title="Permanent link">&para;</a></h2>
-<p>Launch a binary using Pwntools in just a few lines:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pwn</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&quot;/bin/ls&quot;</span><span class="p">)</span>
-<span class="n">p</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
-</code></pre></div>
-<p>You've just spun up a binary and gained interactive control over it — all in Python!</p>
-<hr />
-<h2 id="why-use-pwntools">🤖 Why Use Pwntools?<a class="headerlink" href="#why-use-pwntools" title="Permanent link">&para;</a></h2>
-<p>Instead of manually interacting with GDB or a terminal, Pwntools lets you:</p>
+<h4 id="what-this-workshop-is-really-about">🔧 What This Workshop Is Really About<a class="headerlink" href="#what-this-workshop-is-really-about" title="Permanent link">&para;</a></h4>
+<p>We’re not just here to memorize techniques.</p>
+<p>You’ll learn to <strong>spot vulnerabilities</strong>, but more importantly, you’ll learn to <strong>think and work like an exploiter</strong>:</p>
 <ul>
-<li>Send/receive input and output from programs</li>
-<li>Automate full exploitation workflows</li>
-<li>Format payloads and generate shellcode</li>
-<li>Work locally or connect to remote services</li>
+<li>Getting hands-on with real tools like <a href="../03_Tools/01-gdb.html">01-gdb</a>, <a href="../03_Tools/02-ghidra.html">02-ghidra</a>, and <a href="../03_Tools/03-pwntools.html">03-pwntools</a>.</li>
+<li>Understanding what’s happening under the hood.</li>
+<li>Getting comfortable in unfamiliar territory — and learning to figure things out fast.</li>
 </ul>
-<hr />
-<h2 id="pwntools-for-exploit-development">💥 Pwntools for Exploit Development<a class="headerlink" href="#pwntools-for-exploit-development" title="Permanent link">&para;</a></h2>
-<p>Pwntools makes your exploit scripts:</p>
-<ul>
-<li><strong>Repeatable</strong> — easily test and tweak without manual work</li>
-<li><strong>Readable</strong> — clear logic, clean syntax</li>
-<li><strong>Flexible</strong> — interact locally or over the network</li>
-</ul>
-<hr />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>🔁 Exploit dev is trial and error — Pwntools makes iteration painless.</p>
+<p><strong>Tool fluency matters more than exploit recipes.</strong><br />
+That’s what separates a skilled hacker from someone who just copies code.</p>
 </div>
-<p>🧠 Bonus: Combine Pwntools with GDB (via <code>gdb.attach(p)</code>) to debug live during exploit dev!</p>
-<hr />
-<p>💡 Explore the <a href="https://docs.pwntools.com/en/stable/">Pwntools docs</a> to unlock powerful tools like:</p>
+<h2 id="core-tools-well-use">🛠️ Core Tools We'll Use<a class="headerlink" href="#core-tools-well-use" title="Permanent link">&para;</a></h2>
+<p>Tools are the medium of interacting with our binaries. Nobody today (unless absolutely hardcore and insane) works directly with the 1s and 0s of computers.</p>
 <ul>
-<li><code>p32()</code> / <code>u64()</code> for packing/unpacking</li>
-<li><code>asm()</code> and <code>shellcraft</code> for shellcode</li>
-<li><code>ROP()</code> for crafting ROP chains</li>
+<li><strong><a href="../03_Tools/01-gdb.html">01-gdb</a></strong> – for live debugging and memory inspection.</li>
+<li><strong><a href="../03_Tools/02-ghidra.html">02-ghidra</a></strong> – for reverse engineering and static analysis.</li>
+<li><strong><a href="../03_Tools/03-pwntools.html">03-pwntools</a></strong> – a Python library for building and testing exploits.</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Learning these tools is key</p>
+<p>Techniques change. Tools change. But knowing how to explore and break binaries is what makes you effective.</p>
+</div>
 
 
 
@@ -1047,10 +1027,10 @@ $<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </spa
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "content.action.edit", "content.tooltips"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "content.action.edit", "content.tooltips"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>
