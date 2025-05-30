@@ -1,0 +1,90 @@
+/* ===== Custom Font: FiraCode ===== */
+@font-face {
+  font-family: 'FiraCode';
+  src: url('fonts/FiraCode.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===== Global Theme Variables ===== */
+:root {
+  --md-default-bg-color: #090909;
+  --md-default-fg-color: #d6d6d6;
+  --md-primary-fg-color: #ca4e4e;
+  --md-accent-fg-color: #ff0000;
+
+  --md-code-bg-color: #121212;
+  --md-code-fg-color: #d6d6d6;
+
+  --md-text-font: FiraCode, monospace;
+  --md-code-font: FiraCode, monospace;
+
+  --md-hue: initial;  /* or unset */
+
+  font-size: 17px; /* Adjust for readability */
+}
+
+/* ===== Base Site Styling ===== */
+body {
+  background-color: #090909;
+  color: #d6d6d6;
+  font-family: FiraCode, monospace;
+  font-size: 1rem;
+}
+
+a, .md-typeset a {
+  color: #ca4e4e;
+}
+
+a:hover, .md-typeset a:hover {
+  color: #ff0000;
+}
+
+/* ===== Navigation UI Styling ===== */
+.md-header, .md-tabs {
+  background-color: #121212 !important;
+  color: #d6d6d6 !important;
+}
+
+.md-nav__link,
+.md-nav__title {
+  color: #d6d6d6 !important;
+}
+
+.md-nav__link--active,
+.md-nav__link:hover {
+  background-color: #242424 !important;
+  color: #ff0000 !important;
+}
+
+/* ===== Code Block Styling ===== */
+code, pre {
+  background-color: #121212 !important;
+  color: #d6d6d6;
+  font-family: FiraCode, monospace;
+  font-size: 1em;
+}
+
+/* ===== Syntax Highlighting (Pygments classes) ===== */
+.highlight .k     { color: #ca4e4e; }  /* keyword */
+.highlight .nb    { color: #57afdb; }  /* built-in */
+.highlight .s     { color: #73d975; }  /* string */
+.highlight .c     { color: #4f4f4f; font-style: italic; }  /* comment */
+.highlight .nc    { color: #ffa16c; }  /* class/type */
+.highlight .mi    { color: #bf7d7d; }  /* numbers */
+.highlight .n     { color: #d6d6d6; }  /* variable */
+.highlight .o     { color: #c5c5c5; }  /* operator */
+.highlight .p     { color: #c5c5c5; }  /* punctuation */
+.highlight .nf    { color: #57afdb; }  /* function name */
+.highlight .bp    { color: #57afdb; }  /* built-in pseudo */
+
+blockquote {
+  border-left: 4px solid #d33;  /* red vertical line */
+  padding-left: 1em;            /* space between line and text */
+  margin-left: 0;
+  margin-right: 0;
+  color: #555;                  /* text color */
+  font-style: italic;           /* optional */
+}
+
+
