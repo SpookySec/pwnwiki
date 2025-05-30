@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01_Frame/index.md",
+                "file": "01_Frame/next-steps.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "next-steps"
             }
           }
         ]
@@ -170,6 +170,8 @@
   },
   "active": "75c01ce2562c86a1",
   "lastOpenFiles": [
+    "01_Frame/index.md",
+    "index.md",
     "01_Frame/next-steps.md",
     "04_Exploits/02-plan.md",
     "04_Exploits/01-goal.md",
@@ -181,7 +183,6 @@
     "02_Theory/03-assembly.md",
     "03_Tools/01-gdb.md",
     "03_Tools/02-ghidra.md",
-    "01_Frame/index.md",
     "stylesheets/fonts/FiraCode.ttf",
     "stylesheets/fonts/FiraCode-Regular.ttf",
     "stylesheets/fonts/Silkscreen.ttf",
