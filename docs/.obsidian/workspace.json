@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01_Frame/whoami.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "whoami"
+              "title": "index"
             }
           }
         ]
@@ -170,8 +170,8 @@
   },
   "active": "1a20fb44de752c9f",
   "lastOpenFiles": [
-    "instagram.com/spooky_sec.md",
     "01_Frame/whoami.md",
+    "instagram.com/spooky_sec.md",
     "instagram.com",
     "01_Frame/next-steps.md",
     "01_Frame/index.md",

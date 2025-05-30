@@ -27,8 +27,8 @@ Hi, I’m Bilal Al Tabbaa — a university student with a passion for cybersecur
 
 ## 💬 Contact
 
-- **Instagram**: instagram.com/spooky_sec
-- **GitHub**: github.com/SpookySec
+- **Instagram**: [spooky_sec](https://instagram.com/spooky_sec)
+- **GitHub**: [SpookySec](https://github.com/SpookySec)
 - **Email / Phone Number**: Please contact me privately and I'll be happy to share.
 
 ---
