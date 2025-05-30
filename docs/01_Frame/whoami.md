@@ -7,7 +7,7 @@
 
 ## 🧠 Background
 
-Hi, I’m Bilal Al Tabbaa (spooky) — a student with a passion for cybersecurity, low-level hacking, and the art of binary exploitation. I'm learning with everyone as I go along, and in no way an expert or master.
+Hi, I’m Bilal Al Tabbaa — a university student with a passion for cybersecurity, low-level hacking, and the art of binary exploitation.
 
 - 🎓 **Field of Study**: Computer Engineer / Cybersecurity
 - 🥋 **Hobbies**: BJJ, reading, lifting, hacking
@@ -21,15 +21,14 @@ Hi, I’m Bilal Al Tabbaa (spooky) — a student with a passion for cybersecurit
 - **Debugger**: GDB + GEF
 - **Reversing**: Ghidra
 - **Scripting**: Python + Pwntools
-- **Editor**: Obsidian + VSCode
-- **Help**: Google + ChatGPT (😬)
+- **Editor**: Obsidian + Vim
 
 ---
 
 ## 💬 Contact
 
-- **Instagram**: [instagram.com/spooky_sec]
-- **GitHub**: [github.com/SpookySec]
+- **Instagram**: instagram.com/spooky_sec
+- **GitHub**: github.com/SpookySec
 - **Email / Phone Number**: Please contact me privately and I'll be happy to share.
 
 ---
