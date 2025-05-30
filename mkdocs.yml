@@ -1,0 +1,56 @@
+site_name: Binary Exploitation Workshop
+site_author: Bilal Al Tabbaa (spooky)
+theme:
+  name: material
+  language: en
+  palette:
+    scheme: slate
+    primary: red
+    accent: red
+
+  features:
+    - navigation.tabs
+    - navigation.top
+    - content.code.copy
+    - content.action.edit
+    - content.tooltips
+
+plugins:
+  - roamlinks
+  - search
+
+extra_css:
+  - stylesheets/blacknred.css
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.highlight
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+
+nav:
+  - 📍 Intro:
+      - Welcome: 01_Frame/index.md
+      - Whoami: 01_Frame/whoami.md
+
+  - 📚 Theory:
+      - What is BinExp?: 02_Theory/01-intro.md
+      - Binary Execution: 02_Theory/02-binary-execution.md
+      - Assembly Basics: 02_Theory/03-assembly.md
+
+  - 🛠 Tools:
+      - GDB: 03_Tools/01-gdb.md
+      - Ghidra: 03_Tools/02-ghidra.md
+      - Pwntools: 03_Tools/03-pwntools.md
+
+  - 💥 Exploits:
+      - Goal: 04_Exploits/01-goal.md
+      - Plan: 04_Exploits/02-plan.md
+      - Action: 04_Exploits/03-action.md
+
+  - 👣 Next Steps: 01_Frame/next-steps.md

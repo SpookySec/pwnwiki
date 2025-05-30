@@ -1,0 +1,1206 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Bilal Al Tabbaa (spooky)">
+      
+      
+      
+        <link rel="prev" href="../01-intro/">
+      
+      
+        <link rel="next" href="../03-assembly/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Binary Execution - Binary Exploitation Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/blacknred.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#understanding-binary-execution" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Binary Exploitation Workshop" class="md-header__button md-logo" aria-label="Binary Exploitation Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Binary Exploitation Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Binary Execution
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01_Frame/" class="md-tabs__link">
+          
+  
+  
+  📍 Intro
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-intro/" class="md-tabs__link">
+          
+  
+  
+  📚 Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03_Tools/01-gdb/" class="md-tabs__link">
+          
+  
+  
+  🛠 Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04_Exploits/01-goal/" class="md-tabs__link">
+          
+  
+  
+  💥 Exploits
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../01_Frame/next-steps/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  👣 Next Steps
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Binary Exploitation Workshop" class="md-nav__button md-logo" aria-label="Binary Exploitation Workshop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Binary Exploitation Workshop
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    📍 Intro
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            📍 Intro
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Frame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Frame/whoami/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Whoami
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    📚 Theory
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            📚 Theory
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What is BinExp?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Binary Execution
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Binary Execution
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#elf-file-top-to-bottom" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 ELF File: Top to Bottom
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 ELF File: Top to Bottom">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-elf-header-files-table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ELF Header (File's "Table of Contents")
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-program-headers-memory-mapping-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Program Headers (Memory Mapping Instructions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-section-headers-file-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Section Headers (File Organization)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-in-memory-layout-what-really-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. In-Memory Layout (What Really Matters)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-assembly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assembly Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🛠 Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            🛠 Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Tools/01-gdb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Tools/02-ghidra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ghidra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Tools/03-pwntools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pwntools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    💥 Exploits
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            💥 Exploits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_Exploits/01-goal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Goal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_Exploits/02-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Plan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_Exploits/03-action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Action
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Frame/next-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    👣 Next Steps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#elf-file-top-to-bottom" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 ELF File: Top to Bottom
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 ELF File: Top to Bottom">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-elf-header-files-table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ELF Header (File's "Table of Contents")
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-program-headers-memory-mapping-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Program Headers (Memory Mapping Instructions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-section-headers-file-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Section Headers (File Organization)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-in-memory-layout-what-really-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. In-Memory Layout (What Really Matters)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="understanding-binary-execution">🧠 Understanding Binary Execution<a class="headerlink" href="#understanding-binary-execution" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="elf-file-top-to-bottom">🔍 ELF File: Top to Bottom<a class="headerlink" href="#elf-file-top-to-bottom" title="Permanent link">&para;</a></h2>
+<p>ELF files have a well-defined structure, which lets the OS load and run programs correctly. To analyze or exploit binaries, it helps to understand this layout step-by-step — just like opening a file and inspecting its parts.</p>
+<hr />
+<h3 id="1-elf-header-files-table-of-contents">1. ELF Header (File's "Table of Contents")<a class="headerlink" href="#1-elf-header-files-table-of-contents" title="Permanent link">&para;</a></h3>
+<p>The ELF header is at the very top of the file. It tells us:</p>
+<ul>
+<li>What kind of file it is (executable, shared object, etc.)</li>
+<li>The target architecture (e.g., x86_64)</li>
+<li>The entry point address (where execution begins)</li>
+<li>Where to find the program headers and section headers in the file</li>
+</ul>
+<p>You can see this info with:</p>
+<div class="highlight"><pre><span></span><code>$ readelf -h /bin/ls       
+ELF Header:
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF64
+  Data:                              2&#39;s complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              DYN (Position-Independent Executable file)
+  Machine:                           Advanced Micro Devices X86-64
+  Version:                           0x1
+  Entry point address:               0x6aa0
+  Start of program headers:          64 (bytes into file)
+  Start of section headers:          136232 (bytes into file)
+  Flags:                             0x0
+  Size of this header:               64 (bytes)
+  Size of program headers:           56 (bytes)
+  Number of program headers:         13
+  Size of section headers:           64 (bytes)
+  Number of section headers:         31
+  Section header string table index: 30
+</code></pre></div>
+<h3 id="2-program-headers-memory-mapping-instructions">2. Program Headers (Memory Mapping Instructions)<a class="headerlink" href="#2-program-headers-memory-mapping-instructions" title="Permanent link">&para;</a></h3>
+<p>Program headers describe how the file should be loaded into memory. They specify which parts of the file become segments in memory, and their permissions (read, write, execute).</p>
+<p>For exploitation, these tell us:</p>
+<ul>
+<li>Where the code segment (<code>.text</code>) is loaded</li>
+<li>Where data segments (<code>.data</code>, <code>.bss</code>) go</li>
+<li>Stack and heap locations aren’t here but are managed at runtime</li>
+</ul>
+<p>Inspect with:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>readelf<span class="w"> </span>-l<span class="w"> </span>/bin/ls
+
+Elf<span class="w"> </span>file<span class="w"> </span><span class="nb">type</span><span class="w"> </span>is<span class="w"> </span>DYN<span class="w"> </span><span class="o">(</span>Position-Independent<span class="w"> </span>Executable<span class="w"> </span>file<span class="o">)</span>
+Entry<span class="w"> </span>point<span class="w"> </span>0x6aa0
+There<span class="w"> </span>are<span class="w"> </span><span class="m">13</span><span class="w"> </span>program<span class="w"> </span>headers,<span class="w"> </span>starting<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span><span class="m">64</span>
+
+Program<span class="w"> </span>Headers:
+<span class="w">  </span>Type<span class="w">           </span>Offset<span class="w">             </span>VirtAddr<span class="w">           </span>PhysAddr
+<span class="w">                 </span>FileSiz<span class="w">            </span>MemSiz<span class="w">              </span>Flags<span class="w">  </span>Align
+<span class="w">  </span>PHDR<span class="w">           </span>0x0000000000000040<span class="w"> </span>0x0000000000000040<span class="w"> </span>0x0000000000000040
+<span class="w">                 </span>0x00000000000002d8<span class="w"> </span>0x00000000000002d8<span class="w">  </span>R<span class="w">      </span>0x8
+<span class="w">  </span>INTERP<span class="w">         </span>0x0000000000000318<span class="w"> </span>0x0000000000000318<span class="w"> </span>0x0000000000000318
+<span class="w">                 </span>0x000000000000001c<span class="w"> </span>0x000000000000001c<span class="w">  </span>R<span class="w">      </span>0x1
+<span class="w">      </span><span class="o">[</span>Requesting<span class="w"> </span>program<span class="w"> </span>interpreter:<span class="w"> </span>/lib64/ld-linux-x86-64.so.2<span class="o">]</span>
+<span class="w">  </span>LOAD<span class="w">           </span>0x0000000000000000<span class="w"> </span>0x0000000000000000<span class="w"> </span>0x0000000000000000
+<span class="w">                 </span>0x0000000000003458<span class="w"> </span>0x0000000000003458<span class="w">  </span>R<span class="w">      </span>0x1000
+<span class="w">  </span>LOAD<span class="w">           </span>0x0000000000004000<span class="w"> </span>0x0000000000004000<span class="w"> </span>0x0000000000004000
+<span class="w">                 </span>0x0000000000013091<span class="w"> </span>0x0000000000013091<span class="w">  </span>R<span class="w"> </span>E<span class="w">    </span>0x1000
+<span class="w">  </span>LOAD<span class="w">           </span>0x0000000000018000<span class="w"> </span>0x0000000000018000<span class="w"> </span>0x0000000000018000
+
+...
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>R</code></td>
+<td>Readable</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>Writable</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>Executable</td>
+</tr>
+<tr>
+<td><code>A</code></td>
+<td>Allocated (loaded in memory)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-section-headers-file-organization">3. Section Headers (File Organization)<a class="headerlink" href="#3-section-headers-file-organization" title="Permanent link">&para;</a></h3>
+<p>Sections are like pieces inside the file used during linking and debugging. Key sections include:</p>
+<ul>
+<li><code>.text</code> — contains executable instructions</li>
+<li><code>.data</code> / <code>.bss</code> — global/static initialized and uninitialized variables</li>
+<li><code>.rodata</code> — read-only data like strings</li>
+<li><code>.plt/.got</code> — jump tables for dynamic linking (important for exploits)</li>
+</ul>
+<p>Sections organize the file’s content but aren’t always loaded contiguously in memory.</p>
+<p>Check with:</p>
+<div class="highlight"><pre><span></span><code>readelf -S /bin/ls       
+There are 31 section headers, starting at offset 0x21428:
+
+Section Headers:
+  [Nr] Name              Type             Address           Offset
+       Size              EntSize          Flags  Link  Info  Align
+  [ 0]                   NULL             0000000000000000  00000000
+       0000000000000000  0000000000000000           0     0     0
+  [ 1] .interp           PROGBITS         0000000000000318  00000318
+       000000000000001c  0000000000000000   A       0     0     1
+  [ 2] .note.gnu.pr[...] NOTE             0000000000000338  00000338
+       0000000000000030  0000000000000000   A       0     0     8
+  [ 3] .note.gnu.bu[...] NOTE             0000000000000368  00000368
+       0000000000000024  0000000000000000   A       0     0     4
+  [ 4] .note.ABI-tag     NOTE             000000000000038c  0000038c
+       0000000000000020  0000000000000000   A       0     0     4
+  [ 5] .gnu.hash         GNU_HASH         00000000000003b0  000003b0
+       000000000000004c  0000000000000000   A       6     0     8
+...
+  [16] .text             PROGBITS         0000000000004ce0  00004ce0
+       00000000000123a2  0000000000000000  AX       0     0     16
+  [17] .fini             PROGBITS         0000000000017084  00017084
+       000000000000000d  0000000000000000  AX       0     0     4
+  [18] .rodata           PROGBITS         0000000000018000  00018000
+       0000000000004dcc  0000000000000000   A       0     0     32
+...
+  [25] .got              PROGBITS         0000000000021c58  00020c58
+       00000000000003a0  0000000000000008  WA       0     0     8
+  [26] .data             PROGBITS         0000000000022000  00021000
+       0000000000000278  0000000000000000  WA       0     0     32
+  [27] .bss              NOBITS           0000000000022280  00021278
+       00000000000012c0  0000000000000000  WA       0     0     32
+</code></pre></div>
+<p><img alt="elf-layout.png" src="../../99_Resources/elf-layout.png" /></p>
+<h3 id="4-in-memory-layout-what-really-matters">4. In-Memory Layout (What Really Matters)<a class="headerlink" href="#4-in-memory-layout-what-really-matters" title="Permanent link">&para;</a></h3>
+<p>When the program runs, the loader maps these segments into memory:</p>
+<ul>
+<li>The code lives in an executable segment (from <code>.text</code>)</li>
+<li>The data lives in writable segments (<code>.data</code>, <code>.bss</code>)</li>
+<li>The stack is set up for local variables and function calls</li>
+<li>The heap is used for dynamic memory allocation (<code>malloc</code>, etc.)</li>
+</ul>
+<p>Your goal as an exploiter is to understand how user input flows into memory regions and how those affect program control flow.</p>
+<h2 id="summary">🔑 Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The ELF header points to program and section headers</li>
+<li>Program headers describe memory layout</li>
+<li>Sections organize the file’s contents</li>
+<li>Understanding this layout helps you trace where code and data live, which is crucial for exploitation</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Overwhelmed?</p>
+<p>I was too, and still am. Give it time and it'll become natural.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "content.action.edit", "content.tooltips"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
