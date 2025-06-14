@@ -15,16 +15,6 @@ Hi, I’m Bilal Al Tabbaa — a university student with a passion for cybersecur
 
 ---
 
-## 🗂️ Current Stack
-
-- **OS**: Windows 10 / Kali WSL + Parrot OS Laptop
-- **Debugger**: GDB + GEF
-- **Reversing**: Ghidra
-- **Scripting**: Python + Pwntools
-- **Editor**: Obsidian + Vim
-
----
-
 ## 💬 Contact
 
 - **Instagram**: [spooky_sec](https://instagram.com/spooky_sec)
