@@ -82,7 +82,7 @@ Program Headers:
 | ---- | ---------------------------- |
 | `R`  | Readable                     |
 | `W`  | Writable                     |
-| `X`  | Executable                   |
+| `E`  | Executable                   |
 | `A`  | Allocated (loaded in memory) |
 
 ### 3. Section Headers (File Organization)
