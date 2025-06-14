@@ -964,6 +964,193 @@ You can pause, inspect, step through, or even change execution on the fly.</p>
 </code></pre></div>
 <p>This script safely adds the plugin to your <code>~/.gdbinit</code> so GEF loads automatically whenever you start GDB.</p>
 <hr />
+<h1 id="gdb-gef-cheatsheet">🧠 GDB + GEF Cheatsheet<a class="headerlink" href="#gdb-gef-cheatsheet" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>🧭 Category</th>
+<th>🛠️ Command</th>
+<th>🧾 Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>▶️ Run/Control</td>
+<td><code>run</code></td>
+<td>Start the program</td>
+</tr>
+<tr>
+<td></td>
+<td><code>start</code></td>
+<td>Run and stop at <code>main</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>continue</code> / <code>c</code></td>
+<td>Resume execution</td>
+</tr>
+<tr>
+<td></td>
+<td><code>next</code> / <code>n</code></td>
+<td>Step <strong>over</strong> function calls</td>
+</tr>
+<tr>
+<td></td>
+<td><code>step</code> / <code>s</code></td>
+<td>Step <strong>into</strong> function calls</td>
+</tr>
+<tr>
+<td></td>
+<td><code>finish</code></td>
+<td>Run until current function returns</td>
+</tr>
+<tr>
+<td></td>
+<td><code>jump *0xADDR</code></td>
+<td>Set instruction pointer (skip code)</td>
+</tr>
+<tr>
+<td>🧨 Breakpoints</td>
+<td><code>break main</code></td>
+<td>Break at function</td>
+</tr>
+<tr>
+<td></td>
+<td><code>break *0xADDR</code></td>
+<td>Break at exact address</td>
+</tr>
+<tr>
+<td></td>
+<td><code>info breakpoints</code></td>
+<td>List breakpoints</td>
+</tr>
+<tr>
+<td></td>
+<td><code>delete N</code></td>
+<td>Delete breakpoint number N</td>
+</tr>
+<tr>
+<td></td>
+<td><code>disable N</code> / <code>enable N</code></td>
+<td>Toggle breakpoint</td>
+</tr>
+<tr>
+<td>🧠 Registers</td>
+<td><code>info registers</code></td>
+<td>View all registers</td>
+</tr>
+<tr>
+<td></td>
+<td><code>set $rax = 0x1234</code></td>
+<td>Modify register</td>
+</tr>
+<tr>
+<td>🧬 Memory Inspection</td>
+<td><code>x/32x $rsp</code></td>
+<td>View memory in hex</td>
+</tr>
+<tr>
+<td></td>
+<td><code>x/s $rdi</code></td>
+<td>View string at address</td>
+</tr>
+<tr>
+<td></td>
+<td><code>x/16i $rip</code></td>
+<td>Disassemble next 16 instructions</td>
+</tr>
+<tr>
+<td></td>
+<td><code>x/gx 0xADDR</code></td>
+<td>View 64-bit word at address</td>
+</tr>
+<tr>
+<td></td>
+<td><code>x/32b 0xADDR</code></td>
+<td>Dump 32 bytes at address</td>
+</tr>
+<tr>
+<td>🧱 Disassembly</td>
+<td><code>disassemble main</code></td>
+<td>Disassemble function</td>
+</tr>
+<tr>
+<td></td>
+<td><code>telescope $rsp</code></td>
+<td>Show memory stack layout (GEF)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>context</code></td>
+<td>Show GEF context (registers, stack, etc)</td>
+</tr>
+<tr>
+<td>🧩 Stack &amp; Heap (GEF)</td>
+<td><code>telescope $rbp</code></td>
+<td>View memory from frame pointer</td>
+</tr>
+<tr>
+<td></td>
+<td><code>heap chunks</code></td>
+<td>Display heap metadata</td>
+</tr>
+<tr>
+<td></td>
+<td><code>dereference 0xADDR</code></td>
+<td>Show what's pointed to</td>
+</tr>
+<tr>
+<td>🧪 Exploit Helpers</td>
+<td><code>pattern create 100</code></td>
+<td>Generate cyclic pattern</td>
+</tr>
+<tr>
+<td></td>
+<td><code>pattern offset 0x41414141</code></td>
+<td>Find offset in pattern</td>
+</tr>
+<tr>
+<td>💀 Debug Info</td>
+<td><code>backtrace</code> / <code>bt</code></td>
+<td>Show function call stack</td>
+</tr>
+<tr>
+<td></td>
+<td><code>info frame</code></td>
+<td>Show current stack frame</td>
+</tr>
+<tr>
+<td></td>
+<td><code>info functions</code></td>
+<td>List functions in binary</td>
+</tr>
+<tr>
+<td></td>
+<td><code>info files</code></td>
+<td>Show loaded binary and its sections</td>
+</tr>
+<tr>
+<td>📂 Arguments/Files</td>
+<td><code>set args ARG1 ARG2</code></td>
+<td>Set command-line arguments</td>
+</tr>
+<tr>
+<td></td>
+<td><code>file ./a.out</code></td>
+<td>Load a binary</td>
+</tr>
+<tr>
+<td></td>
+<td><code>symbol-file ./a.out</code></td>
+<td>Load debug symbols</td>
+</tr>
+<tr>
+<td></td>
+<td><code>checksec</code></td>
+<td>List enabled security features</td>
+</tr>
+</tbody>
+</table>
 <h2 id="final-tip">🧭 Final Tip<a class="headerlink" href="#final-tip" title="Permanent link">&para;</a></h2>
 <p>💡 <strong>Always use GDB with GEF for binary exploitation</strong>. It speeds up learning and makes debugging binaries 10x more intuitive.</p>
 <p>If you're feeling fancy later, you can also explore:

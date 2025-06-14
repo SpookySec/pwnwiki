@@ -69,7 +69,7 @@ This script safely adds the plugin to your `~/.gdbinit` so GEF loads automatical
 
 ---
 
-# 🧠 GDB + GEF Cheatsheet
+## 📓 GDB + GEF Cheatsheet
 
 | 🧭 Category             | 🛠️ Command                          | 🧾 Description                                  |
 |------------------------|-------------------------------------|------------------------------------------------|
